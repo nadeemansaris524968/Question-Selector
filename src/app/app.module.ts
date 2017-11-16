@@ -1,3 +1,4 @@
+import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { IndependentService } from './service/independent.service';
 import { BrowserModule } from '@angular/platform-browser';
@@ -11,7 +12,8 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    HttpModule
   ],
   providers: [ IndependentService],
   bootstrap: [AppComponent]

@@ -20,11 +20,10 @@ export class AppComponent implements OnInit {
       .subscribe(questions => this.independentQuestions = questions);
   }
 
-
   answerRadioClick(question: IndependentQuestion, answerRadio: HTMLInputElement, ) {
     question.chosenAnswer = answerRadio.value;
-    console.log("Question: "+JSON.stringify(question));
-    console.log("All Questions: "+JSON.stringify(this.independentQuestions));
+    console.log(JSON.stringify(question));
+    // console.log("All Questions: "+JSON.stringify(this.independentQuestions));
   }
 
 }

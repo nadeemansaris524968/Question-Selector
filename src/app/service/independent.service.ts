@@ -1,3 +1,4 @@
+import { Http } from '@angular/http';
 import { of } from 'rxjs/observable/of';
 import { IndependentQuestion } from './../independent';
 import { Observable } from 'rxjs/Rx';
@@ -6,7 +7,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class IndependentService {
 
-  constructor() { }
+  constructor(private http: Http) { }
 
   independentQuestions: IndependentQuestion[] = [
     {
