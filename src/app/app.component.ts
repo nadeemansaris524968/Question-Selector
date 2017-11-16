@@ -23,7 +23,8 @@ export class AppComponent implements OnInit {
 
   answerRadioClick(question: IndependentQuestion, answerRadio: HTMLInputElement, ) {
     question.chosenAnswer = answerRadio.value;
-    console.log(question);
+    console.log("Question: "+JSON.stringify(question));
+    console.log("All Questions: "+JSON.stringify(this.independentQuestions));
   }
 
 }
