@@ -1,3 +1,5 @@
+import { FormsModule } from '@angular/forms';
+import { IndependentService } from './service/independent.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -8,9 +10,10 @@ import { AppComponent } from './app.component';
     AppComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [ IndependentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
