@@ -1,3 +1,4 @@
+import { Response } from '@angular/http';
 import { IndependentService } from './service/independent.service';
 import { IndependentQuestion } from './independent';
 import { Component, ElementRef, OnInit } from '@angular/core';
@@ -17,7 +18,10 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.service.getAllIndependentQuestions()
-      .subscribe(questions => this.independentQuestions = questions);
+          .subscribe(jsonData => {
+            this.independentQuestions = jsonData[0].independent;
+          });
+      // .subscribe(questions => this.independentQuestions = questions);
   }
 
   answerRadioClick(question: IndependentQuestion, answerRadio: HTMLInputElement, ) {
