@@ -10,10 +10,9 @@
           <label for="answerChoices">
             <strong>Choose answer:</strong>
           </label>
-          <div *ngFor="let answer of question.answers; let j = index">
-            <!-- j - Associating each label with each radio button -->
-            <label for="answer{{j}}">
-                <input type="radio" id="answer{{j}}" name="answer{{i}}" [value]="answer" (click)="answerRadioClick(question, answerRadio)" #answerRadio> {{ answer }}
+          <div *ngFor="let answer of question.answers;">
+            <label>
+                <input type="radio" id="answer" name="answer{{i}}" [value]="answer" (click)="answerRadioClick(question, answerRadio)" #answerRadio> {{ answer }}
             </label>
           </div>
         </div>

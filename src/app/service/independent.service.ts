@@ -10,27 +10,8 @@ export class IndependentService {
 
   constructor(private http: Http) { }
 
-  independentQuestions: IndependentQuestion[] = [
-    {
-      text: 'Given how the CXR look, do you think the patient has Gait normal?',
-      answers: [
-        'Yes',
-        'No',
-        'Not applicable'
-      ],
-      chosenAnswer: ''
-    },
-    {
-      text: 'Given how the CXR look, do you think the patient has Gait normal?',
-      answers: [
-        'Yes',
-        'No',
-        'Not applicable'
-      ],
-      chosenAnswer: ''
-    },
-  ];
-
+  independentQuestions: IndependentQuestion[];
+  
   getAllIndependentQuestions() : Observable<Response> {
     return this.http.get('.././assets/findings_questions_answer_options.json')
                     .map(jsonData => jsonData.json());
