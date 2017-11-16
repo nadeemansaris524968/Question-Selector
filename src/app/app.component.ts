@@ -1,3 +1,4 @@
+import { IfThenQuestion } from './if-then';
 import { Response } from '@angular/http';
 import { IndependentService } from './service/independent.service';
 import { IndependentQuestion } from './independent';
@@ -11,7 +12,9 @@ import { Component, ElementRef, OnInit } from '@angular/core';
 export class AppComponent implements OnInit {
   title = 'app';
 
-  independentQuestions: IndependentQuestion[];
+  independentQuestions: any[];
+
+  ifThenQuestions: any[];
 
   constructor(private service: IndependentService) {
   }
@@ -20,13 +23,15 @@ export class AppComponent implements OnInit {
     this.service.getAllIndependentQuestions()
           .subscribe(jsonData => {
             this.independentQuestions = jsonData[0].independent;
+            this.ifThenQuestions = jsonData[0].if_thens;
           });
       // .subscribe(questions => this.independentQuestions = questions);
   }
 
-  answerRadioClick(question: IndependentQuestion, answerRadio: HTMLInputElement, ) {
-    question.chosenAnswer = answerRadio.value;
+  answerRadioClick(question: any, answerRadio: HTMLInputElement, ) {
+    question["chosenAnswer"] = answerRadio.value;
     console.log(JSON.stringify(question));
+    console.log(this.ifThenQuestions);
     // console.log("All Questions: "+JSON.stringify(this.independentQuestions));
   }
 

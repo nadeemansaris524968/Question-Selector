@@ -1,21 +1,35 @@
 <form>
   <div *ngIf="independentQuestions">
-    <div *ngFor="let question of independentQuestions; let i = index">
+    <h2>Independent Questions</h2>
+
+    <div *ngFor="let question of independentQuestions; let questInd = index">
       <div class="form-group">
         <label for="questionText">
-          <strong>Question</strong>
+          <strong>Q.{{questInd + 1}}
+            <span id="questionText" name="text">{{ question.text }}</span>
+          </strong>
         </label>
-        <p id="questionText" name="text">{{ question.text }}</p>
         <div class="form-group">
           <label for="answerChoices">
             <strong>Choose answer:</strong>
           </label>
           <div *ngFor="let answer of question.answers;">
             <label>
-                <input type="radio" id="answer" name="answer{{i}}" [value]="answer" (click)="answerRadioClick(question, answerRadio)" #answerRadio> {{ answer }}
+              <input type="radio" id="answer" name="answer{{questInd}}" [value]="answer" (click)="answerRadioClick(question, answerRadio)" #answerRadio> {{ answer }}
             </label>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="ifThenQuestions">
+    <h2>If Then Questions</h2>
+    <div *ngFor="let obj of ifThenQuestions; let questInd = index">
+      <div class="form-group">
+        <label>
+          <strong>Q.{{questInd + 1}}</strong>
+        </label>
+        <p>{{ obj.if_question.text }}</p>
       </div>
     </div>
   </div>
