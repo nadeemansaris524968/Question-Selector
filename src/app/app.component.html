@@ -1,36 +1,64 @@
-<form>
-  <div *ngIf="independentQuestions">
-    <h2>Independent Questions</h2>
-
-    <div *ngFor="let question of independentQuestions; let questInd = index">
-      <div class="form-group">
-        <label for="questionText">
-          <strong>Q.{{questInd + 1}}
-            <span id="questionText" name="text">{{ question.text }}</span>
-          </strong>
-        </label>
-        <div class="form-group">
-          <label for="answerChoices">
-            <strong>Choose answer:</strong>
-          </label>
-          <div *ngFor="let answer of question.answers;">
-            <label>
-              <input type="radio" id="answer" name="answer{{questInd}}" [value]="answer" (click)="answerRadioClick(question, answerRadio)" #answerRadio> {{ answer }}
-            </label>
+<div class="container">
+  <div class="row">
+    <form>
+      <div class="col-sm-6">
+        <div class="row">
+          <!-- <img src="http://medsieve00.almaden.ibm.com:81/dataportal/rsnadata/vqadata/CXR1007_IM-0008-2001.png" alt=""> -->
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="row">
+          <!-- Independent Questions -->
+          <div *ngIf="independentQuestions">
+            <h2>Independent Questions</h2>
+            <div *ngFor="let question of independentQuestions; let questInd = index">
+              <div class="form-group" style="background-color:rgb(158, 221, 221); padding: 5px;">
+                <label for="questionText">
+                  <strong>Q.{{questInd + 1}}
+                    <span id="questionText" name="text">{{ question.text }}</span>
+                  </strong>
+                </label>
+                <div class="form-group">
+                  <label for="answerChoices">
+                    <strong>Choose answer:</strong>
+                  </label>
+                  <div *ngFor="let answer of question.answers;">
+                    <label>
+                      <input type="radio" id="answer" name="answer{{questInd}}" [value]="answer" (click)="answerRadioClick(question, answerRadio)"
+                        #answerRadio> {{ answer }}
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <!-- If Then Questions -->
+          <div *ngIf="ifThenQuestions">
+            <h2>If Then Questions</h2>
+            <div *ngFor="let obj of ifThenQuestions; let questInd = index">
+              <div class="form-group" style="background-color: bisque; padding: 5px;">
+                <label>
+                  <strong>Q.{{questInd + 1}}
+                    <span>{{ obj.if_question.text }}</span>
+                  </strong>
+                </label>
+                <div class="form-group">
+                  <label>
+                    <strong>Choose answer:</strong>
+                    <div *ngFor="let answer of obj.if_question.answers">
+                      <label>
+                        <input type="radio" name="ifQuestionAnswer{{questInd}}" value="answer"> {{ answer }}
+                      </label>
+                    </div>
+                  </label>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </form>
   </div>
-  <div *ngIf="ifThenQuestions">
-    <h2>If Then Questions</h2>
-    <div *ngFor="let obj of ifThenQuestions; let questInd = index">
-      <div class="form-group">
-        <label>
-          <strong>Q.{{questInd + 1}}</strong>
-        </label>
-        <p>{{ obj.if_question.text }}</p>
-      </div>
-    </div>
-  </div>
-</form>
+</div>
