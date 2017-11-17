@@ -24,8 +24,8 @@
                   </label>
                   <div *ngFor="let answer of question.answers;">
                     <label>
-                      <input type="radio" id="answer" name="answer{{questInd}}" [value]="answer" (click)="answerRadioClick(question, answerRadio)"
-                        #answerRadio> {{ answer }}
+                      <input type="radio" id="answer" name="answer{{questInd}}" [value]="answer" (click)="independentAnswer(question, independentRadio)"
+                        #independentRadio> {{ answer }}
                     </label>
                   </div>
                 </div>
@@ -37,19 +37,20 @@
           <!-- If Then Questions -->
           <div *ngIf="ifThenQuestions">
             <h2>If Then Questions</h2>
-            <div *ngFor="let obj of ifThenQuestions; let questInd = index">
+            <div *ngFor="let ifThenObj of ifThenQuestions; let questInd = index">
               <div class="form-group" style="background-color: bisque; padding: 5px;">
                 <label>
                   <strong>Q.{{questInd + 1}}
-                    <span>{{ obj.if_question.text }}</span>
+                    <span>{{ ifThenObj.if_question.text }}</span>
                   </strong>
                 </label>
                 <div class="form-group">
                   <label>
                     <strong>Choose answer:</strong>
-                    <div *ngFor="let answer of obj.if_question.answers">
+                    <div *ngFor="let answer of ifThenObj.if_question.answers">
                       <label>
-                        <input type="radio" name="ifQuestionAnswer{{questInd}}" value="answer"> {{ answer }}
+                        <input type="radio" name="ifQuestionAnswer{{questInd}}" value="answer" (click)="ifAnswer(ifThenObj.if_question, ifRadio)"
+                          #ifRadio> {{ answer }}
                       </label>
                     </div>
                   </label>

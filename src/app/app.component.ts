@@ -16,6 +16,8 @@ export class AppComponent implements OnInit {
 
   ifThenQuestions: any[];
 
+  showThenQuestions: boolean = false;
+
   constructor(private service: IndependentService) {
   }
 
@@ -28,11 +30,19 @@ export class AppComponent implements OnInit {
       // .subscribe(questions => this.independentQuestions = questions);
   }
 
-  answerRadioClick(question: any, answerRadio: HTMLInputElement, ) {
-    question["chosenAnswer"] = answerRadio.value;
-    // console.log(JSON.stringify(question));
+  independentAnswer(question: any, independentRadio: HTMLInputElement) {
+    question["chosenAnswer"] = independentRadio.value;
+    console.log(JSON.stringify(question));
     // console.log(this.ifThenQuestions);
     // console.log("All Questions: "+JSON.stringify(this.independentQuestions));
+  }
+
+  ifAnswer(ifThenObj_ifQuestion: any, ifRadio: HTMLInputElement) {
+    if (ifRadio.value === "Yes")
+      this.showThenQuestions = true;
+    
+    ifThenObj_ifQuestion["chosenAnswer"] = ifRadio.value;
+    console.log("If_question: "+JSON.stringify(ifThenObj_ifQuestion));
   }
 
 }
